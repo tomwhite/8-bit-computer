@@ -75,3 +75,101 @@ TODO: can we just make everything active high, so we don't need inverters?
 
 Control lines:
 | HLT MI | RI RO | IO II | AI AO | EO SU | BI OI | CE CO | J
+
+## 8. CPU control logic
+
+[8-bit CPU control logic: Part 1](https://www.youtube.com/watch?v=dXdoim96v5A)
+
+We get to define the opcodes! As long as we can express on the computer we can do what we like.
+
+Here is the first program:
+
+```
+[1] [2]  [3]  [4]  [5]
+LDA  14 0000 0001|1110 ; load contents of memory address 14 into the A register
+ADD  15 0001 0010|1111 ; add the contents of memory address 14 to the A register
+OUT     0010 1110|0000 ; move the contents of the A register to the output register
+        1110 0001|1100 ; value 28
+        1111 0000|1110 ; value 14
+```
+
+- `[1]` is the operator/opcode
+- `[2]` is the operand
+- `[3]` is the address in RAM
+- `[4]` is the 4 bit number for the operator
+- `[5]` is the 4 bit number for the operand
+
+In the notation that CircuitJS1 uses for the contents of a SRAM chip, this is
+
+```
+0: 30 47 224
+14: 28 14
+```
+
+So rather than programming the computer with DIP switches, we can just edit the memory directly, which is a lot easier.
+
+Each instruction is broken into multiple micro instructions, as follows. These can be manually executed on the computer.
+
+```
+LDA 14
+------
+CO MI ; move PC to memory address register
+RO II ; move memory contents to instruction register
+CE    ; increment PC
+
+IO MI ; move instruction register address (lower 4 bits) to memory address register
+RO AI ; move memory contents to A register
+
+ADD 15
+------
+CO MI ; move PC to memory address register
+RO II ; move memory contents to instruction register
+CE    ; increment PC
+
+IO MI ; move instruction register address (lower 4 bits) to memory address register
+RO BI ; move memory contents to B register
+EO AI ; move sum from ALU to A register
+
+OUT
+---
+CO MI
+RO II
+CE
+
+AO OI ; move A register to output register
+```
+
+First 3 steps for each command are to fetch the instruction and increment the program counter.
+
+Saved in _8.control1.circuitjs.txt_
+
+[8-bit CPU control logic: Part 2](https://www.youtube.com/watch?v=X7rCxs1ppyY)
+
+Started to build the logic. Used a regular counter (don't need one with load), and a demultiplexer.
+
+[8-bit CPU control logic: Part 3](https://www.youtube.com/watch?v=dHWFpkGsxOs)
+
+```
+Instruction  Step HLT MI RI RO IO II AI AO  EO SU BI OI CE CO J
+
+XXXX         000      1                                    1
+XXXX         001            1     1                     1
+
+0001         010      1        1
+0001         011            1        1
+0001         100
+
+0010         010      1        1
+0010         011            1                     1
+0010         100                     1         1
+
+1110         010                        1            1
+1110         011
+1110         100
+```
+
+Wrote a little python program _create_mem.py_ to convert to CircuitJS1 notation. This is equivalent to the EEPROM programming from the video.
+
+[8-bit CPU reset circuit and power supply tips](https://www.youtube.com/watch?v=HtFro0UKqkk)
+
+Reset (CLR)
