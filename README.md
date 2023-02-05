@@ -173,3 +173,58 @@ Wrote a little python program _create_mem.py_ to convert to CircuitJS1 notation.
 [8-bit CPU reset circuit and power supply tips](https://www.youtube.com/watch?v=HtFro0UKqkk)
 
 Reset (CLR)
+
+[Reprogramming CPU microcode with an Arduino](https://www.youtube.com/watch?v=JUVt_KYAp-I)
+
+Run `python microcode.py` and then `hexdump -Cv microcode.bin` to look at it (it should match the video).
+
+Then upload to both "EEPROM" chips in CircuitJS1. Also change pin A on the right hand EEPROM to 1.
+
+Compute 5 + 6 - 7 (=4)
+
+```
+LDA  15 0000 0001|1111
+ADD  14 0001 0010|1110
+SUB  13 0010 0011|1101
+OUT     0011 1110|0000
+HLT     0100 1111|0000
+        1101 0000|0111
+        1110 0000|0110
+        1111 0000|0101
+```
+
+In CircuitJS1 notation:
+
+```
+0: 31 46 61 224 240
+13: 7 6 5
+```
+
+[Adding more machine language instructions to the CPU](https://www.youtube.com/watch?v=FCscQGBIL-Y)
+
+Output multiples of 3. (Note, no data in this program, since we use LDI, load immediate.)
+
+```
+LDI  3 0000 0101|0011
+STA 15 0001 0100|1111
+LDI  0 0010 0101|0000
+ADD 15 0011 0010|1111
+OUT    0100 1110|0000
+JMP  3 0101 0110|0011
+```
+
+```
+0: 83 79 80 47 224 99
+```
+
+Saved in _8.control3.circuitjs.txt_
+
+[Making a computer Turing complete](https://www.youtube.com/watch?v=AqNDk_UJW4k)
+
+Theory
+
+[CPU flags register](https://www.youtube.com/watch?v=ObnosznZvHY)
+
+CircuitJS1 has an 8-bit NOR gate we can use
+
+TODO: highlights of the computer - running things, and corresponding videos
