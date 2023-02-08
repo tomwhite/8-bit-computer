@@ -176,7 +176,7 @@ Reset (CLR)
 
 [Reprogramming CPU microcode with an Arduino](https://www.youtube.com/watch?v=JUVt_KYAp-I)
 
-Run `python microcode.py` and then `hexdump -Cv microcode.bin` to look at it (it should match the video).
+Run `python microcode.py` and then `hexdump -Cv microcode.rom` to look at it (it should match the video).
 
 Then upload to both "EEPROM" chips in CircuitJS1. Also change pin A on the right hand EEPROM to 1.
 
