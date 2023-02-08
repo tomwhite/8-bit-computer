@@ -1,0 +1,9 @@
+OUT
+ADD 15
+JC 4
+JMP 0
+SUB 15
+OUT
+JZ 0
+JMP 4
+; 15 1

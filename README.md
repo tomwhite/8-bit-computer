@@ -227,4 +227,6 @@ Theory
 
 CircuitJS1 has an 8-bit NOR gate we can use
 
+[Conditional jump instructions](https://www.youtube.com/watch?v=Zg1NdPKoosU)
+
 TODO: highlights of the computer - running things, and corresponding videos
