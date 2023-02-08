@@ -14,8 +14,14 @@ with open("times3.asm") as f:
     for line in f:
         if line.startswith(";"):
             continue
+        line = line.split(";")[0]
         tokens = line.strip().split()
         op = tokens[0]
         low = int(tokens[1]) if len(tokens) == 2 else 0
-        print(OPCODES[op] << 4 | low, end=" ")
+        if op in OPCODES:
+            print(OPCODES[op] << 4 | low, end=" ")
+        else:
+            # assume op is an address to store data
+            address = int(op)
+            print(address << 4 | low, end=" ")
     print()
