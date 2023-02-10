@@ -67,7 +67,7 @@ ucode[FLAGS_Z1C1][JC][2] = IO|J
 ucode[FLAGS_Z1C1][JZ][2] = IO|J
 
 
-with open("microcode-with-flags.rom", "wb") as f:
+with open("roms/microcode-with-flags.rom", "wb") as f:
     for address in range(1024):
         flags       = (address & 0b1100000000) >> 8
         byte_sel    = (address & 0b0010000000) >> 7

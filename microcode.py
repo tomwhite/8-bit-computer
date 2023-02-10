@@ -38,7 +38,7 @@ data = [
     MI|CO,  RO|II|CE,  HLT,    0,      0,         0, 0, 0,   # 1111 - HLT
 ]
 
-with open("microcode.rom", "wb") as f:
+with open("roms/microcode.rom", "wb") as f:
     for address, value in enumerate(data):
         high = value >> 8
         f.write(bytes([high]))
