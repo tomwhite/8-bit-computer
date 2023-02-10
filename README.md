@@ -10,25 +10,22 @@ All the videos are on [YouTube](https://www.youtube.com/playlist?list=PLowKtXNTB
 
 ## 1. Clock module
 
-[Astable 555 timer - 8-bit computer clock - part 1](https://www.youtube.com/watch?v=kRlSFm519Bo)
-
-[Monostable 555 timer - 8-bit computer clock - part 2](https://www.youtube.com/watch?v=81BgFhm2vz8)
-
-[Bistable 555 - 8-bit computer clock - part 3](https://www.youtube.com/watch?v=WCwJNnx36Rk)
-
-[Clock logic - 8-bit computer clock - part 4](https://www.youtube.com/watch?v=SmQ5K7UQPMM)
+| Video                                                                                               | Circuit                 | Notes |
+| --------------------------------------------------------------------------------------------------- | ----------------------- | ----- |
+| [Astable 555 timer - 8-bit computer clock - part 1](https://www.youtube.com/watch?v=kRlSFm519Bo)    |                         |       |
+| [Monostable 555 timer - 8-bit computer clock - part 2](https://www.youtube.com/watch?v=81BgFhm2vz8) |                         |       |
+| [Bistable 555 - 8-bit computer clock - part 3](https://www.youtube.com/watch?v=WCwJNnx36Rk)         |                         |       |
+| [Clock logic - 8-bit computer clock - part 4](https://www.youtube.com/watch?v=SmQ5K7UQPMM)          | _1.clock.circuitjs.txt_ |       |
 
 ## 2. Registers
 
-[Bus architecture and how register transfers work - 8 bit register - Part 1](https://www.youtube.com/watch?v=QzWW-CBugZo)
-
-[Tri-state logic: Connecting multiple outputs together - 8 bit register - Part 2](https://www.youtube.com/watch?v=faAjse109Q8)
-
-| Video                                                                                                            | Circuit                           | Notes                                                         |
-| ---------------------------------------------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------------------- |
-| [Designing and building a 1-bit register - 8 bit register - Part 3](https://www.youtube.com/watch?v=-arYx_oVIj8) | _2.register-1-bit.circuitjs.txt_  | Built from logic gates, a D flip-flop, and a tri-state buffer |
-| [Building an 8-bit register - 8-bit register - Part 4](https://www.youtube.com/watch?v=CiMaWbz_6E8)              | _2.register-custom.circuitjs.txt_ | Built using CircuitJS1's Custom Logic component               |
-| [Testing our computer's registers - 8-bit register - Part 5](https://www.youtube.com/watch?v=9WE3Obdjtv0)        | _2.register-test.circuitjs.txt_   | Transfer the contents of one register to another              |
+| Video                                                                                                                          | Circuit                           | Notes                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------- |
+| [Bus architecture and how register transfers work - 8 bit register - Part 1](https://www.youtube.com/watch?v=QzWW-CBugZo)      |                                   |                                                               |
+| [Tri-state logic: Connecting multiple outputs together - 8 bit register - Part 2](https://www.youtube.com/watch?v=faAjse109Q8) |                                   |                                                               |
+| [Designing and building a 1-bit register - 8 bit register - Part 3](https://www.youtube.com/watch?v=-arYx_oVIj8)               | _2.register-1-bit.circuitjs.txt_  | Built from logic gates, a D flip-flop, and a tri-state buffer |
+| [Building an 8-bit register - 8-bit register - Part 4](https://www.youtube.com/watch?v=CiMaWbz_6E8)                            | _2.register-custom.circuitjs.txt_ | Built using CircuitJS1's Custom Logic component               |
+| [Testing our computer's registers - 8-bit register - Part 5](https://www.youtube.com/watch?v=9WE3Obdjtv0)                      | _2.register-test.circuitjs.txt_   | Transfer the contents of one register to another              |
 
 ## 3. Arithmetic logic unit (ALU)
 
@@ -40,8 +37,6 @@ All the videos are on [YouTube](https://www.youtube.com/playlist?list=PLowKtXNTB
 | [Building the ALU](https://www.youtube.com/watch?v=S-3fXU3FZQc)                                                | _3.alu.circuitjs.txt_ | Built using XOR gates, an 8-bit adder (rather than two 4-bit adders), and an 8-bit buffer |
 | [Troubleshooting the ALU](https://www.youtube.com/watch?v=U7Q8-2YZTUU)                                         |                       | Debugging the wiring                                                                      |
 | [Testing the computer's ALU](https://www.youtube.com/watch?v=4nCMDvnR2Fg)                                      | _3.alu.circuitjs.txt_ | Counting by twos                                                                          |
-
-TODO: need to add CLR (clear) to registers
 
 ## 4. Random access memory (RAM) module
 
@@ -57,23 +52,23 @@ I struggled to get the RAM working. I noticed a lot of high current flows, which
 
 ## 5. Program counter
 
-| Video                                                                 | Circuit | Notes                                                                                             |
-| --------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------- |
-| [Program counter design](https://www.youtube.com/watch?v=g_1HyxBzjl0) |         | In CircuitJS1 the 74LS161 4-bit binary counter is represented by the Counter with Load component. |
-| [Program counter build](https://www.youtube.com/watch?v=tNwU7pK_3tk)  |         |                                                                                                   |
+| Video                                                                 | Circuit              | Notes                                                                                             |
+| --------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------- |
+| [Program counter design](https://www.youtube.com/watch?v=g_1HyxBzjl0) |                      | In CircuitJS1 the 74LS161 4-bit binary counter is represented by the Counter with Load component. |
+| [Program counter build](https://www.youtube.com/watch?v=tNwU7pK_3tk)  | _5.pc.circuitjs.txt_ |                                                                                                   |
 
 ## 6. Output register
 
 In CircuitJS1 we can cheat since there is a decimal display component, so there is no need to do any binary to decimal conversion. (However, it doesn't have the twos complement mode, and I couldn't see an easy way to do that. Since that is only used for display, we can do the conversion ourselves if needed.)
 
+See _6.output.circuitjs.txt_
+
 ## 7. Bringing it all together
 
-| Video                                                                                   | Circuit | Notes                                                                                                                                                                                                             |
-| --------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [8-bit computer build: Connecting the bus](https://www.youtube.com/watch?v=-6JAgFWCL9w) |         | Covers the output register, and uses a different chip. But I just used the same pattern as the other registers. Bus wiring is achieved in CircuitJS1 using labelled nodes. TODO: Do I need to pull bus to ground? |
-| [8-bit CPU control signal overview](https://www.youtube.com/watch?v=AwUirxi9eBg)        |         | This is basically a wiring exercise. General note: I haven't needed to use LEDs in CircuitJS1, since you can see if a wire is high or low just by looking at it! (High is green, low is grey.)                    |
-
-TODO: can we just make everything active high, so we don't need inverters?
+| Video                                                                                   | Circuit | Notes                                                                                                                                                                                          |
+| --------------------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [8-bit computer build: Connecting the bus](https://www.youtube.com/watch?v=-6JAgFWCL9w) |         | Covers the output register, and uses a different chip. But I just used the same pattern as the other registers. Bus wiring is achieved in CircuitJS1 using labelled nodes.                     |
+| [8-bit CPU control signal overview](https://www.youtube.com/watch?v=AwUirxi9eBg)        |         | This is basically a wiring exercise. General note: I haven't needed to use LEDs in CircuitJS1, since you can see if a wire is high or low just by looking at it! (High is green, low is grey.) |
 
 Control lines:
 | HLT MI | RI RO | IO II | AI AO | EO SU | BI OI | CE CO | J
@@ -232,5 +227,3 @@ CircuitJS1 has an 8-bit NOR gate we can use
 [Conditional jump instructions](https://www.youtube.com/watch?v=Zg1NdPKoosU)
 
 [Programming Fibonacci on a breadboard computer](https://www.youtube.com/watch?v=a73ZXDJtU48)
-
-TODO: highlights of the computer - running things, and corresponding videos
