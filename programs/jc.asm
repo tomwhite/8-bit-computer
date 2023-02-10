@@ -1,0 +1,9 @@
+0: OUT
+1: ADD 15
+2: JC 4
+3: JMP 0
+4: SUB 15
+5: OUT
+6: JZ 0
+7: JMP 4
+15: 1

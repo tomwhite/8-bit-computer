@@ -1,6 +1,0 @@
-LDI  3
-STA 15
-LDI  0
-ADD 15
-OUT
-JMP  3

@@ -1,3 +1,17 @@
+# Assemble a program for the 8-bit computer, suitable for loading
+# into a CircuitJS1 SRAM component, representing the program memory.
+#
+# Each line has the following form:
+#
+# <address>: <opcode> <operand>
+#
+# or, to store data values:
+#
+# <address>: <value>
+# 
+# Anything after a semicolon ; is treated as a comment.
+#
+
 import sys
 
 OPCODES = {
@@ -17,13 +31,16 @@ OPCODES = {
 input = sys.argv[1]
 
 with open(input) as f:
-    print("0: ", end="")
     for line in f:
         if line.startswith(";"):
             continue
         line = line.split(";")[0]
         tokens = line.strip().split()
-        op = tokens[0]
-        low = int(tokens[1]) if len(tokens) == 2 else 0
-        print(OPCODES[op] << 4 | low, end=" ")
-    print()
+        address = int(tokens[0][:-1])
+        op = tokens[1]
+        if op not in OPCODES:
+            code = int(op)  # treat as a data value
+        else:
+            low = int(tokens[2]) if len(tokens) == 3 else 0
+            code = OPCODES[op] << 4 | low
+        print(f"{address}: {code}")

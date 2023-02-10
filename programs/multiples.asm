@@ -1,0 +1,6 @@
+0: LDI  3
+1: STA 15
+2: LDI  0
+3: ADD 15
+4: OUT
+5: JMP  3
