@@ -1,3 +1,5 @@
+; multiplies two numbers
+; from "Conditional jump instructions", https://www.youtube.com/watch?v=Zg1NdPKoosU
 0: LDA 14
 1: SUB 12
 2: JC 6

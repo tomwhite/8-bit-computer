@@ -1,3 +1,5 @@
+; output Fibonacci numbers
+; from "Programming Fibonacci on a breadboard computer", https://www.youtube.com/watch?v=a73ZXDJtU48
 0:  LDI 1   ; y=1
 1:  STA 14  ; "
 2:  LDI 0   ; x=0

@@ -1,3 +1,5 @@
+; add and subtract
+; from "Reprogramming CPU microcode with an Arduino", https://www.youtube.com/watch?v=JUVt_KYAp-I
 0: LDA 15
 1: ADD 14
 2: SUB 13

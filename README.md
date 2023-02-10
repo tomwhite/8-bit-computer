@@ -2,228 +2,92 @@
 
 This repo contains simulations and notes for Ben Eater's project to [build an 8-bit computer from scratch](https://eater.net/8bit).
 
-Rather than build the project on breadboards, I created simulations of each module using [CircuitJS1](https://github.com/pfalstad/circuitjs1), an electronic circuit simulator that runs in the browser.
+His [series of videos](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU) is amazing and I highly recommend them.
 
-You can watch each video and try out the corresponding circuit to understand how the 8-bit computer works.
+I didn't have the kit, so rather than build the project on breadboards, I created simulations of each module using [CircuitJS1](https://github.com/pfalstad/circuitjs1), an electronic circuit simulator that runs in the browser. I found this very useful for playing with the components and modules to build understanding.
 
-All the videos are on [YouTube](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU).
+You can read through the notes I made as I went through the videos, and the circuits as they evolved, in [this branch](https://github.com/tomwhite/8-bit-computer/tree/development-progress).
 
-## 1. Clock module
+![The 8-bit computer after having run the "add" program](screenshot.png)
 
-| Video                                                                                               | Circuit                 | Notes |
-| --------------------------------------------------------------------------------------------------- | ----------------------- | ----- |
-| [Astable 555 timer - 8-bit computer clock - part 1](https://www.youtube.com/watch?v=kRlSFm519Bo)    |                         |       |
-| [Monostable 555 timer - 8-bit computer clock - part 2](https://www.youtube.com/watch?v=81BgFhm2vz8) |                         |       |
-| [Bistable 555 - 8-bit computer clock - part 3](https://www.youtube.com/watch?v=WCwJNnx36Rk)         |                         |       |
-| [Clock logic - 8-bit computer clock - part 4](https://www.youtube.com/watch?v=SmQ5K7UQPMM)          | _1.clock.circuitjs.txt_ |       |
+## Try it out
 
-## 2. Registers
+Download [computer.circuitjs.txt](computer.circuitjs.txt) from this repository onto your computer. (Checkout the whole repository if you want to do more than run the built-in "add" program.)
 
-| Video                                                                                                                          | Circuit                           | Notes                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------- |
-| [Bus architecture and how register transfers work - 8 bit register - Part 1](https://www.youtube.com/watch?v=QzWW-CBugZo)      |                                   |                                                               |
-| [Tri-state logic: Connecting multiple outputs together - 8 bit register - Part 2](https://www.youtube.com/watch?v=faAjse109Q8) |                                   |                                                               |
-| [Designing and building a 1-bit register - 8 bit register - Part 3](https://www.youtube.com/watch?v=-arYx_oVIj8)               | _2.register-1-bit.circuitjs.txt_  | Built from logic gates, a D flip-flop, and a tri-state buffer |
-| [Building an 8-bit register - 8-bit register - Part 4](https://www.youtube.com/watch?v=CiMaWbz_6E8)                            | _2.register-custom.circuitjs.txt_ | Built using CircuitJS1's Custom Logic component               |
-| [Testing our computer's registers - 8-bit register - Part 5](https://www.youtube.com/watch?v=9WE3Obdjtv0)                      | _2.register-test.circuitjs.txt_   | Transfer the contents of one register to another              |
+Open the [full screen version of CircuitJS1](http://falstad.com/circuit/circuitjs.html), preferably on a computer with a large monitor!
 
-## 3. Arithmetic logic unit (ALU)
+Select File | Open File... in the menu, and choose the computer.circuitjs.txt file you downloaded.
 
-| Video                                                                                                          | Circuit               | Notes                                                                                     |
-| -------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------- |
-| [Learn how computers add numbers and build a 4 bit adder circuit](https://www.youtube.com/watch?v=wvJc9CZcvBc) |                       | 1-bit adder is the Full Adder example in CircuitJS1, 4-bit adder is the Adder component   |
-| [Twos complement: Negative numbers in binary](https://www.youtube.com/watch?v=4qH4unVtJkE)                     |                       | Theory                                                                                    |
-| [ALU Design](https://www.youtube.com/watch?v=mOVOS9AjgFs)                                                      |                       |                                                                                           |
-| [Building the ALU](https://www.youtube.com/watch?v=S-3fXU3FZQc)                                                | _3.alu.circuitjs.txt_ | Built using XOR gates, an 8-bit adder (rather than two 4-bit adders), and an 8-bit buffer |
-| [Troubleshooting the ALU](https://www.youtube.com/watch?v=U7Q8-2YZTUU)                                         |                       | Debugging the wiring                                                                      |
-| [Testing the computer's ALU](https://www.youtube.com/watch?v=4nCMDvnR2Fg)                                      | _3.alu.circuitjs.txt_ | Counting by twos                                                                          |
+The computer's RAM is pre-loaded with the "add" program like the one described in [8-bit CPU control logic: Part 1](https://www.youtube.com/watch?v=dXdoim96v5A) (although in that video it was run by hand).
 
-## 4. Random access memory (RAM) module
+Click the switch in the top left hand corner to connect the clock, then watch the computer run the program. After a while the output should display 42, and the computer will enter the halt state (HLT will be high in the clock section).
 
-| Video                                                                                 | Circuit                   | Notes                                                                                                                                                                             |
-| ------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [8-bit computer RAM intro](https://www.youtube.com/watch?v=FnxPIZR1ybs)               |                           | Theory                                                                                                                                                                            |
-| [RAM module build - part 1](https://www.youtube.com/watch?v=uYXwCBo40iA)              | _4.ram.circuitjs.txt_     | CircuitJS1 has a SRAM component. However it doesn't have separate input and output pins unlike the chip used in the video, so we need another tri-state buffer on the write side. |
-| [RAM module build - part 2](https://www.youtube.com/watch?v=KNve2LCcSRc)              | _4.ram-mar.circuitjs.txt_ | Memory Address Register                                                                                                                                                           |
-| [RAM module build - part 3](https://www.youtube.com/watch?v=5rl1tEFXKt0)              |                           | Data lines. I didn't add the DIP switches for the data lines, since CircuitJS1 allows you to edit the contents of the SRAM directly.                                              |
-| [RAM module testing and troubleshooting](https://www.youtube.com/watch?v=Vw3uDOUJRGw) |                           | A bit of debugging, then tests. Also labels control wires. I didn't implement the leading edge detector with a resistor and capacitor (should not affect correctness).            |
+To run again, take CLR high (in the clock section - click on the L next to CLR) to reset. You can also switch the clock to manual mode and click on the L input to pulse the clock. This is useful for stepping through a program to understand what is happening in various registers and on the bus.
 
-I struggled to get the RAM working. I noticed a lot of high current flows, which is a sign something is wrong. The mistake was that I was using an 8-bit register (custom logic) on the input side to the RAM. This was a problem because it is clocked, and a part of the logic sets the output to the input when there is no change. I think this was conflicting with the output of the RAM component, which also sets the same pins. When I changed the 8-bit register to an 8-bit buffer (which has no CLK), it worked.
+### Running programs
 
-## 5. Program counter
+Assembler code for programs from various videos can be found in the programs directory. Convert to machine code by running `python assemble.py` followed by the source filename. For example:
 
-| Video                                                                 | Circuit              | Notes                                                                                             |
-| --------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------- |
-| [Program counter design](https://www.youtube.com/watch?v=g_1HyxBzjl0) |                      | In CircuitJS1 the 74LS161 4-bit binary counter is represented by the Counter with Load component. |
-| [Program counter build](https://www.youtube.com/watch?v=tNwU7pK_3tk)  | _5.pc.circuitjs.txt_ |                                                                                                   |
-
-## 6. Output register
-
-In CircuitJS1 we can cheat since there is a decimal display component, so there is no need to do any binary to decimal conversion. (However, it doesn't have the twos complement mode, and I couldn't see an easy way to do that. Since that is only used for display, we can do the conversion ourselves if needed.)
-
-See _6.output.circuitjs.txt_
-
-## 7. Bringing it all together
-
-| Video                                                                                   | Circuit | Notes                                                                                                                                                                                          |
-| --------------------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [8-bit computer build: Connecting the bus](https://www.youtube.com/watch?v=-6JAgFWCL9w) |         | Covers the output register, and uses a different chip. But I just used the same pattern as the other registers. Bus wiring is achieved in CircuitJS1 using labelled nodes.                     |
-| [8-bit CPU control signal overview](https://www.youtube.com/watch?v=AwUirxi9eBg)        |         | This is basically a wiring exercise. General note: I haven't needed to use LEDs in CircuitJS1, since you can see if a wire is high or low just by looking at it! (High is green, low is grey.) |
-
-Control lines:
-| HLT MI | RI RO | IO II | AI AO | EO SU | BI OI | CE CO | J
-
-## 8. CPU control logic
-
-[8-bit CPU control logic: Part 1](https://www.youtube.com/watch?v=dXdoim96v5A)
-
-We get to define the opcodes! As long as we can express on the computer we can do what we like.
-
-Here is the first program:
-
-```
-[1] [2]  [3]  [4]  [5]
-LDA  14 0000 0001|1110 ; load contents of memory address 14 into the A register
-ADD  15 0001 0010|1111 ; add the contents of memory address 14 to the A register
-OUT     0010 1110|0000 ; move the contents of the A register to the output register
-        1110 0001|1100 ; value 28
-        1111 0000|1110 ; value 14
+```shell
+python assemble.py programs/add_sub.asm
 ```
 
-- `[1]` is the operator/opcode
-- `[2]` is the operand
-- `[3]` is the address in RAM
-- `[4]` is the 4 bit number for the operator
-- `[5]` is the 4 bit number for the operand
-
-In the notation that CircuitJS1 uses for the contents of a SRAM chip, this is
+This will output the contents to copy into the RAM (where it says "Program ->"). Double click on the component and paste in the contents. For example, this is the contents for `add_sub.asm`:
 
 ```
-0: 30 47 224
-14: 28 14
+0: 31
+1: 46
+2: 61
+3: 224
+4: 240
+13: 7
+14: 6
+15: 5
 ```
 
-So rather than programming the computer with DIP switches, we can just edit the memory directly, which is a lot easier.
+You can then run the program as described earlier.
 
-Each instruction is broken into multiple micro instructions, as follows. These can be manually executed on the computer.
+### Building ROMs
 
-```
-LDA 14
-------
-CO MI ; move PC to memory address register
-RO II ; move memory contents to instruction register
-CE    ; increment PC
+There are two ROMS (for the EEPROMs), one from the [Reprogramming CPU microcode with an Arduino](https://www.youtube.com/watch?v=JUVt_KYAp-I) video, and one that uses the flags register that was added later to do conditional logic (see [Conditional jump instructions](https://www.youtube.com/watch?v=Zg1NdPKoosU)).
 
-IO MI ; move instruction register address (lower 4 bits) to memory address register
-RO AI ; move memory contents to A register
+To re-generate a ROM, run
 
-ADD 15
-------
-CO MI ; move PC to memory address register
-RO II ; move memory contents to instruction register
-CE    ; increment PC
-
-IO MI ; move instruction register address (lower 4 bits) to memory address register
-RO BI ; move memory contents to B register
-EO AI ; move sum from ALU to A register
-
-OUT
----
-CO MI
-RO II
-CE
-
-AO OI ; move A register to output register
+```shell
+python microcode-with-flags.py
 ```
 
-First 3 steps for each command are to fetch the instruction and increment the program counter.
+Then to view it run
 
-Saved in _8.control1.circuitjs.txt_
-
-[8-bit CPU control logic: Part 2](https://www.youtube.com/watch?v=X7rCxs1ppyY)
-
-Started to build the logic. Used a regular counter (don't need one with load), and a demultiplexer.
-
-[8-bit CPU control logic: Part 3](https://www.youtube.com/watch?v=dHWFpkGsxOs)
-
-```
-Instruction  Step HLT MI RI RO IO II AI AO  EO SU BI OI CE CO J
-
-XXXX         000      1                                    1
-XXXX         001            1     1                     1
-
-0001         010      1        1
-0001         011            1        1
-0001         100
-
-0010         010      1        1
-0010         011            1                     1
-0010         100                     1         1
-
-1110         010                        1            1
-1110         011
-1110         100
+```shell
+hexdump -Cv roms/microcode-with-flags.rom
 ```
 
-Wrote a little python program _create_mem.py_ to convert to CircuitJS1 notation. This is equivalent to the EEPROM programming from the video.
+Then load a copy into _both_ ROM 1 and ROM 2 in the circuit simulator.
 
-[8-bit CPU reset circuit and power supply tips](https://www.youtube.com/watch?v=HtFro0UKqkk)
+### Manual control logic
 
-Reset (CLR)
+To control the computer manually - i.e. at the stage before the control logic was added - you need to disconnect the Control logic module. It's simplest to just delete it. Then connect the control line nodes so they can be set manually.
 
-[Reprogramming CPU microcode with an Arduino](https://www.youtube.com/watch?v=JUVt_KYAp-I)
+For example, to load a value from the bus to the A register:
 
-Run `python microcode.py` and then `hexdump -Cv microcode.rom` to look at it (it should match the video).
+- Enable PROG (set it to H)
+- Enter a number on the bus
+- Turn AI on (set it to H)
+- Advance the clock
+- On next rising clock edge the number will be loaded into A
+- Turn AI off (set it to L)
+- Disable PROG (set it to L)
 
-Then upload to both "EEPROM" chips in CircuitJS1. Also change pin A on the right hand EEPROM to 1.
+## Implementation details and differences from the original
 
-Compute 5 + 6 - 7 (=4)
+CircuitJS1 provides a lot of "idealised" components which I used instead of actual integrated circuits. The key ones I used were:
 
-```
-LDA  15 0000 0001|1111
-ADD  14 0001 0010|1110
-SUB  13 0010 0011|1101
-OUT     0011 1110|0000
-HLT     0100 1111|0000
-        1101 0000|0111
-        1110 0000|0110
-        1111 0000|0101
-```
+- For the clock module I used CircuitJS1's built in clock component. I added some logic to allow manual stepping too. (But you can find a clock circuit simulation that uses 555 timers like the videos in the _1.clock.circuitjs.txt_ file in the [development-progress branch](https://github.com/tomwhite/8-bit-computer/tree/development-progress).)
+- To build registers I used CircuitJS1's tri-state buffers and custom logic components. (You can see how these work in "register" CircuitJS1 files in the [development-progress branch](https://github.com/tomwhite/8-bit-computer/tree/development-progress).)
+- For the ALU I used CircuitJS1's adder component.
+- I didn't add the DIP switches for the RAM data lines, since CircuitJS1 allows you to edit the contents of the SRAM directly.
+- For the program counter, in CircuitJS1 the 74LS161 4-bit binary counter is represented by the "counter with load" component.
+- For the output display we can cheat since there is a decimal display component, so there is no need to do any binary to decimal conversion.
 
-In CircuitJS1 notation:
-
-```
-0: 31 46 61 224 240
-13: 7 6 5
-```
-
-[Adding more machine language instructions to the CPU](https://www.youtube.com/watch?v=FCscQGBIL-Y)
-
-Output multiples of 3. (Note, no data in this program, since we use LDI, load immediate.)
-
-```
-LDI  3 0000 0101|0011
-STA 15 0001 0100|1111
-LDI  0 0010 0101|0000
-ADD 15 0011 0010|1111
-OUT    0100 1110|0000
-JMP  3 0101 0110|0011
-```
-
-```
-0: 83 79 80 47 224 99
-```
-
-Saved in _8.control3.circuitjs.txt_
-
-[Making a computer Turing complete](https://www.youtube.com/watch?v=AqNDk_UJW4k)
-
-Theory
-
-[CPU flags register](https://www.youtube.com/watch?v=ObnosznZvHY)
-
-CircuitJS1 has an 8-bit NOR gate we can use
-
-[Conditional jump instructions](https://www.youtube.com/watch?v=Zg1NdPKoosU)
-
-[Programming Fibonacci on a breadboard computer](https://www.youtube.com/watch?v=a73ZXDJtU48)
+Since it's a simulation the computer runs a lot slower than a real circuit. With the clock set to 200Hz, the time step 200u (microseconds), and a the Simulation Speed pushed right up, it is just about fast enough for most programs, but is not as fast as the videos.
