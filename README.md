@@ -6,6 +6,8 @@ Rather than build the project on breadboards, I created simulations of each modu
 
 You can watch each video and try out the corresponding circuit to understand how the 8-bit computer works.
 
+All the videos are on [YouTube](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU).
+
 ## 1. Clock module
 
 [Astable 555 timer - 8-bit computer clock - part 1](https://www.youtube.com/watch?v=kRlSFm519Bo)
@@ -228,5 +230,7 @@ Theory
 CircuitJS1 has an 8-bit NOR gate we can use
 
 [Conditional jump instructions](https://www.youtube.com/watch?v=Zg1NdPKoosU)
+
+[Programming Fibonacci on a breadboard computer](https://www.youtube.com/watch?v=a73ZXDJtU48)
 
 TODO: highlights of the computer - running things, and corresponding videos
